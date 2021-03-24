@@ -1,3 +1,6 @@
+from libro import *
+
+
 def get_list():
     myList={}
     f = open("palabras.txt", mode="rt", encoding="utf-8")
@@ -15,5 +18,13 @@ def get_list():
   return res
 
 
-def mas_antiguos():
-    
+
+def mas_antiguos(lista, anyo):
+    listaFinal=[]
+
+    for i in lista:
+        if libro.get_anyo() <= anyo:
+            listaFinal[i].append(lista.get_Titulo())
+
+    return listaFinal
+

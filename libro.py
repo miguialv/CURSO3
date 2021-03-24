@@ -8,3 +8,9 @@ class Libro:
       
   def get_Autor():
       return self.__autor.get_NombreAutor()
+
+  def get_anyo(self):
+       return self.__anyo
+
+  def get_Titulo(self):
+      return self.__titulo

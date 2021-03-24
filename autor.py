@@ -12,5 +12,6 @@ class Autor:
    def get_ApellidoAutor(self):
        return self.__apellido
     
+    
    def get_Id(self):
        return self.__id_autor
