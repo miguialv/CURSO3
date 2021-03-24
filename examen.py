@@ -7,8 +7,13 @@ def get_list():
     for word in words:
         for i in words:
         return [len(i) for i in lengths]
+        myList[i]={lengths[i]:words[i]}
 
         
     
     f.close()
   return res
+
+
+def mas_antiguos():
+    
