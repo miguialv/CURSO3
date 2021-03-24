@@ -52,6 +52,13 @@ class Cinema:
         for i in num:
                 total+=1
 
+    def reallocate_client(self, from_seat, to_seat):
+        desde = from_seat
+        fila = self.__seating[desde[0]]
+        cliente = fila[desde[1]]
+        self.allocate_passenger(to_seat, cliente)
+        fila[desde[1]] = None
+
     def _client_seats(self):
 
         for i in self.__seating:
@@ -63,12 +70,14 @@ class Cinema:
 cinema = Cinema(rows=10, seats_per_row=8)
 
 #ERROR 1: al reservar una butaca (p.e. fila 2 butaca 4) e imprimir el seating, veo que aparece como ocupada la 4 de cada fila, y no solo de la fila 2.
+#Salen ocupadas la butaca 4 de cada fila porque no estamos accediendo a la única butaca de la fila 2
 print("------------- Error 1 -----------------")
 cinema.create_cinema_seating()
 cinema.book_seat(2,4)
 cinema.print_seating()
 
 #ERROR 2: le paso la lista de "seats" donde deberÃ­a haber 2 libres y me dice que hay 0.
+#El resultado es cero porque el contador no avanza, la manera que trato de implementar es con un generador, cada vez que encuentra un asiento vacío suma uno en el contador.
 print("\n------------- Error 2 -----------------")
 seats = [(2,4), (3,1), (5,2)]
 total = 0
@@ -76,6 +85,8 @@ cinema.count_free_seats(seats,total)
 print("total: "+str(total))
 
 #ERROR 3: quiero modificar la butaca (2,4) de la lista anterior para que sea la (3,4) y no me deja.
+#No se puede modificar porque no se puede acceder así a los elementos de esta tupla
+#La forma que se me ocurre sería realojar al cliente, para eso ultilizamos una nueva función
 print("\n------------- Error 3 -----------------")
 seats[0][1]=3
 total = 0
