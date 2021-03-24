@@ -36,6 +36,7 @@ class Cinema:
             row: la fila de la butaca
             seat: el numero de la butaca
         """
+        
         if self.__seating[row][seat] is None:
             self.__seating[row][seat] = "occupied"
 
@@ -46,10 +47,18 @@ class Cinema:
             rows_seats: lista de butacas a buscar
             total: valor inicial donde se acumularÃ¡ el total
         """
-        for row, seat in rows_seats:
-            if self.__seating[row][seat] == None:
+        
+        num = self._client_seats()
+        for i in num:
                 total+=1
 
+    def _client_seats(self):
+
+        for i in self.__seating:
+            if i != None:
+                for j in i.keys():
+                    if i[j] != None:
+                        yield i[j] 
 #------------------------------------------- MAIN -----------------------------------------------
 cinema = Cinema(rows=10, seats_per_row=8)
 
